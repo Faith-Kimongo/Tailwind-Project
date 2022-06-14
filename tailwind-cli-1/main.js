@@ -5,7 +5,7 @@ let carts = document.querySelectorAll('.add-cart');
 // let goods = document.querySelectorAll('./images');
 
 let products = [
-    // breakfirst
+    // breakfast
     {
         name: 'Black Coffee',
         tag: 'blackcoffee',
@@ -46,18 +46,6 @@ let products = [
         name: 'Iced Latte',
         tag: 'icedlatte',
         price: 3,
-        inCart: 0
-    },
-    {
-        name: 'Pizza',
-        tag: 'pizza',
-        price: 10,
-        inCart: 0
-    },
-    {
-        name: 'Barbecue',
-        tag: 'Barbecue',
-        price: 99,
         inCart: 0
     }
     
@@ -167,63 +155,75 @@ function displayCart() {
         productContainer.innerHTML = '';
         Object.values(cartItems).map(item => {
             productContainer.innerHTML += `
-            <div class="max-w-4xl mx-auto py-8 px-4 sm:py-8 sm:px-6 lg:px-8"> 
-                <form class="mt-2">
-                    <div class="products">
-                        <ul role="list" class="border-gray-200 divide-gray-200">
-                            <li class="flex py-2 sm:py-2">
+            <div class="grid justify-items-center m-2">
+                <div class="flex py-2 sm:py-2 border border-indigo-200">
+                    <form class="mt-2">
+                        <div class="products justify-evenly sm:ml-6 sm:space-x-4">
+                            <ul role="list" class="sm:flex-col lg:flex-col">
+                                <li class="flex py-2 sm:py-2">
 
-                                <div class="product flex py-2 sm:py-2">
-                                    <ion-icon name="trash-outline" class="-ml-2"></ion-icon>
-                                
-                                
-                                    <div class="flex-shrink-0">
-                                        <img src="./images/${item.tag}.jpg" class="w-24 h-24 rounded-lg object-center object-cover sm:w-32 sm:h-32">
-                                    </div>
-                                
-                                
-                                    <div class="relative ml-5 flex-1 flex-col justify-between sm:ml-6">
-                                        
-                                        <div class="item-name flex justify-between sm:grid sm:grid-cols-2">
-                                            <div class="pr-6">
-                                                <span>${item.name}</span>
-                                            </div>
+                                    <div class="product flex lg:flex-row sm:flex-row py-2 sm:py-2">
+                                        <div>
+                                            <ion-icon name="trash-outline" class="visible ml-1 text-indigo-900 max-w-2xl mx-auto px-4 sm:py-1 sm:px-2 lg:px-8 flex sm:flex-initial sm:text-center w-4 h-6 "></ion-icon>
                                         </div>
-                                
                                     
-                                    <div class="price mt-4">
-                                        <span>$${item.price}.00</span>
+                                    
+                                        <div class="flex-shrink-0">
+                                            <img src="./images/${item.tag}.jpg" class="w-24 h-24 rounded-lg object-center object-cover sm:w-32 sm:h-32">
+                                        </div>
+                                    
+                                    
+                                        <div class="relative ml-5 flex-1 flex-col justify-between sm:ml-6">
+                                            
+                                            <div class="item-name flex justify-between sm:grid sm:grid-cols-2">
+                                                <div class="pr-6">
+                                                    <span>${item.name}</span>
+                                                    
+                                                </div>
+                                            </div>
+                                    
+                                        
+                                        <div class="price mt-4 ">
+                                            <span>$${item.price}.00</span>
+                                        </div>
+                                        </div> 
                                     </div>
-                                    </div> 
-                                </div>
-                                
-
-                            
-                                <div class="quantity flex-1 sm:ml-4 relative object-center">
-                                    <ion-icon class="decrease" name="remove-circle-outline"></ion-icon>
-                                    <span>${item.inCart}</span>
-                                    <ion-icon class="increase" name="add-circle-outline"></ion-icon>
-                                </div>
-
-                                
-
-                                <div class="subtotal flex">
-                                    $${item.inCart * item.price}.00
-                                </div>
-
-                            <li>
-                        </ul>
                                     
+
                                 
-                    </div>
-                </form>
+                                    <div class="relative ml-5 flex-initial flex flex-col lg:flex-row justify-between sm:ml-6">
+                                            <div class="quantity ml-4 relative justify-between flex sm:flex-row lg:flex-row mt-6 ">
+                                            <div>
+                                                <ion-icon name="remove-circle-outline" class="decrease h-6 w-6 fill-indigo-800 "></ion-icon>
+                                            </div>
+                                            <div>
+                                                <span class="ml-1 sm:mr-2 h-6 w-6">${item.inCart}</span>
+                                            </div>
+                                            <div>
+                                                <ion-icon name="add-circle-outline" class="increase h-6 w-6 "></ion-icon>
+                                            </div>
+                                        
+                                            </div> 
+
+                                            <div class="subtotal text-end lg:mt-24 pr-6">
+                                                $${item.inCart * item.price}.00
+                                            </div>
+                                    </div>
+
+                                <li>
+                            </ul>
+                                        
+                                    
+                        </div>
+                    </form>
+                </div>
              </div>
                 
             `;
         });
 
         productContainer.innerHTML +=`
-        <div class="basketTotalContainer">
+        <div class="basketTotalContainer max-w-4xl mx-auto py-8 px-4 sm:py-8 sm:px-6 lg:px-8">
             <div class="px-16 quantity mt-6 sm:ml-32 sm:pl-6">
                 <div class="bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8">
                     <div class="flow-root">
@@ -232,7 +232,7 @@ function displayCart() {
                                 <h4 class="basketTotalTitle text-left">
                                     <b> Total <b>
                                 </h4>
-                                <h4 class="basketTotal"> $${cartCost}.00 </h4>
+                                <h4 class="basketTotal "> $${cartCost}.00 </h4>
                             </div>
                             
                         </dl>
@@ -241,7 +241,7 @@ function displayCart() {
                     
                 </div>
 
-                <a href="daraja.js"><button type="submit"  class="w-full bg-indigo-900 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">Purchase</button></a>
+                <a href="#"><button type="submit"  class="justify-end w-full bg-indigo-900 border border-transparent rounded-md shadow-sm py-2 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">Purchase</button></a>
                 
             </div>
         </div>
@@ -253,22 +253,27 @@ function displayCart() {
 }
 //remove button
 function deleteButtons() {
-    let deleteButtons = document.querySelectorAll('.product ion-icon');
+    let deleteButtons = document.querySelectorAll('.products .product ion-icon');
     let productName;
     // console.log(productName);
     let productNumbers = localStorage.getItem('cartNumbers');
     let cartItems = localStorage.getItem('productsInCart');
+    console.log(cartItems);
     cartItems = JSON.parse(cartItems);
     let cartCost = localStorage.getItem('totalCost');
 
     for(let i=0; i < deleteButtons.length; i++) {
         deleteButtons[i].addEventListener('click', () => {
-            productName = deleteButtons[i].parentElement.textContent.trim().toLowerCase().replace(/\s+/g, '');
-//this updates the cart numbers.
-            localStorage.setItem('cartNumbers', productNumbers - cartItems[productName].inCart );
+            productName = deleteButtons[i].parentElement.nextElementSibling.nextElementSibling.firstElementChild.textContent.trim().toLowerCase().replace(/\s+/g, '');
+            console.log(productName);
+
+            //this updates the cart numbers.
+            localStorage.setItem('cartNumbers', productNumbers - cartItems[productName].inCart);
             
             //updates the total
-            localStorage.setItem('totalCost', cartCost - (cartItems[productName].price + " " + cartItems[productName].inCart));
+            //localStorage.setItem('totalCost', cartCost - (cartItems[productName].price + cartItems[productName].inCart));
+
+            localStorage.setItem('totalCost', cartCost - ( cartItems[productName].price * cartItems[productName].inCart));
 
             delete cartItems[productName];
             localStorage.setItem('productsInCart', JSON.stringify(cartItems));
@@ -297,9 +302,9 @@ function manageQuantity() {
 
     for(let i=0; i < decreaseButtons.length; i++) {
         decreaseButtons[i].addEventListener('click', () => {
-            currentQuantity = decreaseButtons[i].parentElement.querySelector('span').textContent;
+            currentQuantity = decreaseButtons[i].parentElement.parentElement.parentElement.querySelector('span').textContent;
             console.log(currentQuantity);
-            currentProduct = decreaseButtons[i].parentElement.previousElementSibling.querySelector('span').textContent.toLowerCase().replace(/ /g, '').trim();
+            currentProduct = decreaseButtons[i].parentElement.parentElement.parentElement.previousElementSibling.querySelector('span').textContent.toLowerCase().replace(/ /g, '').trim();
             console.log(currentProduct);
 
             //if statement ensures when you decrease to 1 it sticks there no going to 0
@@ -315,9 +320,9 @@ function manageQuantity() {
 
     for(let i=0; i < increaseButtons.length; i++) {
         increaseButtons[i].addEventListener('click', () => {
-            currentQuantity = increaseButtons[i].parentElement.querySelector('span').textContent;
+            currentQuantity = increaseButtons[i].parentElement.parentElement.parentElement.querySelector('span').textContent;
             console.log(currentQuantity);
-            currentProduct = increaseButtons[i].parentElement.previousElementSibling.querySelector('span').textContent.toLowerCase().replace(/ /g, '').trim();
+            currentProduct = increaseButtons[i].parentElement.parentElement.parentElement.previousElementSibling.querySelector('span').textContent.toLowerCase().replace(/ /g, '').trim();
             console.log(currentProduct);
 
             cartItems[currentProduct].inCart += 1;

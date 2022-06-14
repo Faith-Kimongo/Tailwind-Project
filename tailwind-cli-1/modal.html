@@ -52,3 +52,50 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> 
 </body>
 </html>
+
+
+window.addEventListener('DOMContentLoaded', () => {
+    var openmodal = document.querySelectorAll('.add-cart')
+    let selectedModalTargetClass =''
+    for (var i = 0; i < openmodal.length; i++) {
+      openmodal[i].addEventListener('click', function(event){
+        selectedModalTargetId = event.target.attributes.getNamedItem('.add-cart')
+        event.preventDefault()
+        toggleModal()
+      })
+    }
+
+    const overlay = document.querySelector('#overlay')
+   overlay.addEventListener('click', toggleModal)
+
+   var closemodal = document.querySelectorAll('#close-modal')
+   for (var i = 0; i < closemodal.length; i++) {
+     closemodal[i].addEventListener('click', toggleModal)
+   }
+
+   document.onkeydown = function(evt) {
+     evt = evt || window.event
+     var isEscape = false
+     if ("key" in evt) {
+       isEscape = (evt.key === "Escape" || evt.key === "Esc")
+     } else {
+       isEscape = (evt.keyCode === 27)
+     }
+     if (isEscape && document.body.classList.contains('modal-active')) {
+       toggleModal()
+     }
+     toggleModal()
+   }
+
+   function toggleModal () {
+     if(!selectedModalTargetId) {
+       return
+     }else {
+      const toggleModal = () => {
+          overlay.classList.toggle('hidden')
+          overlay.classList.toggle('flex')
+      }
+     }
+     
+    }
+  })
